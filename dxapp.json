@@ -1,0 +1,47 @@
+{
+  "name": "samtools-trio",
+  "title": "Samtools trio calling",
+  "dxapi": "1.0.0",
+  "version": "0.0.1",
+  "inputSpec": [
+    {
+      "name": "inputbams",
+      "label": "Input BAM files (in order child, father, mother)",
+      "class": "array:file",
+      "optional": false,
+      "patterns": [ "*.bam" ]
+    },
+    {
+      "name": "reference",
+      "label": "Reference genome",
+      "class": "file",
+      "optional": false,
+      "patterns": [ "*.fa.gz", "*.fasta.gz" ]
+    },
+    {
+      "name": "outputbase",
+      "label": "basename of output file",
+      "class": "string",
+      "optional": true,
+      "default": "triocalls"
+    },
+    {
+      "name": "targetbed",
+      "label": "File containing target regions (.bed)",
+      "class": "file",
+      "optional": true,
+      "patterns": [ "*.bed" ]
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "vcfout",
+      "label": "Jointly-called VCF file",
+      "class": "file"
+    }
+  ],
+  "runSpec": {
+    "interpreter": "python2.7",
+    "file": "src/samtools-trio.py"
+ }
+}
