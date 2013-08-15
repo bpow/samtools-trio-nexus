@@ -18,9 +18,9 @@ from subprocess import check_call as scc
 from subprocess import check_output as sco
 
 @dxpy.entry_point('main')
-def main(inputbams, reference, outputbase, targetbed=None):
+def main(childbam, fatherbam, motherbam, reference, outputbase=None, targetbed=None):
 
-    inputbams = [dxpy.DXFile(item) for item in inputbams]
+    inputbams = [dxpy.DXFile(item) for item in (childbam, fatherbam, motherbam)]
 
     if len(inputbams) != 3:
         raise dxpy.exceptions.AppError("A trio must consist of three files (%d bam files were provided)"%len(inputbams))
@@ -32,6 +32,9 @@ def main(inputbams, reference, outputbase, targetbed=None):
     if not targetbed is None:
         dxpy.download_dxfile(targetbed, "target.bed")
         targetopt = '-l target.bed'
+
+    if outbase is None:
+        outbase = inputbams[0].get_properties()['SAMPLE_NAME'] + '.trio'
 
     # order in trioconfig must be child, father, mother
     trioconfig = open('trioconfig', 'w')

@@ -1,13 +1,27 @@
 {
-  "name": "samtools-trio",
+  "name": "samtools-trio-nexus",
   "title": "Samtools trio calling",
   "dxapi": "1.0.0",
   "version": "0.0.1",
   "inputSpec": [
     {
-      "name": "inputbams",
-      "label": "Input BAM files (in order child, father, mother)",
-      "class": "array:file",
+      "name": "childbam",
+      "label": "Input BAM file for the child",
+      "class": "file",
+      "optional": false,
+      "patterns": [ "*.bam" ]
+    },
+    {
+      "name": "fatherbam",
+      "label": "Input BAM file for the father",
+      "class": "file",
+      "optional": false,
+      "patterns": [ "*.bam" ]
+    },
+    {
+      "name": "motherbam",
+      "label": "Input BAM file for the mother",
+      "class": "file",
       "optional": false,
       "patterns": [ "*.bam" ]
     },
@@ -22,8 +36,7 @@
       "name": "outputbase",
       "label": "basename of output file",
       "class": "string",
-      "optional": true,
-      "default": "triocalls"
+      "optional": true
     },
     {
       "name": "targetbed",

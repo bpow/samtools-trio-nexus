@@ -22,9 +22,10 @@ To build, you need the DNANexus SDK installed, then issue ```dx build``` from wi
 
 ## Inputs
 
-* **Input BAM files (in order child, father, mother)** ``inputbams``: ``array:file``
->  It is important that the input BAM files be provided in this order (since the
->  order is used to create the ``trioconfig`` file)
+* **Input BAM file for child** ``childbam``: ``file``
+* **Input BAM file for the father** ``fatherbam``: ``file``
+* **Input BAM file for the mother** ``motherbam``: ``file``
+>  The input BAM files need to have an appropriate SAMPLE_NAME property which will be used in the output VCF
 * **Reference genome** ``reference``: ``file``
 * **File containing target regions (.bed)** ``targetbed``: ``file`` (optional)
 
