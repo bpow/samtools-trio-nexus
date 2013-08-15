@@ -12,6 +12,14 @@ https://wiki.dnanexus.com/.
 
 This applet does not properly handle non-pseudoautosomal regions of the X chromosome correctly.
 
+## getting/building the source
+
+The git repo needs to be checked out with ```git clone --recursive``` to get the samtools source.
+
+If you did not do this and already have the source, try ```git submodule init``` then ```git submodule update```
+
+To build, you need the DNANexus SDK installed, then issue ```dx build``` from within this directory.
+
 ## Inputs
 
 * **Input BAM files (in order child, father, mother)** ``inputbams``: ``array:file``
